@@ -1,0 +1,14 @@
+ConfigArgParse==1.7
+ftfy==6.1.1
+matplotlib==3.8.0
+numpy==1.26.0
+opencv_python==4.8.0.76
+pandas==2.1.1
+Pillow==10.0.1
+Pillow==10.0.1
+regex==2023.8.8
+setuptools==68.0.0
+torch==2.0.1+cu118
+torchvision==0.15.2
+tqdm==4.66.1
+xlrd==2.0.1
