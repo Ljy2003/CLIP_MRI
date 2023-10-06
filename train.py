@@ -75,6 +75,7 @@ class dataset(Dataset):
 
     def __getitem__(self, index):
         image_path, label = self.data[index].split('\t')
+        print(self.data_dir+image_path)
         image = cv2.imread(self.data_dir+image_path).astype('float32')
         image = cv2.resize(image, (self.resolution, self.resolution))
         image = image/255
