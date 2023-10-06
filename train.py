@@ -51,11 +51,11 @@ def config_parser():
     parser.add_argument('--model_name', type=str,
                         default='ViT-B/32', help='pre-trained model name')
     parser.add_argument('--lr', type=float, default=0.001)
-    parser.add_argument('--batch_size', type=int, default=8)
+    parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--device', default=torch.device('cuda'))
-    parser.add_argument('--epochs', type=int, default=1)
+    parser.add_argument('--epochs', type=int, default=8)
 
-    parser.add_argument('--i_save', type=int, default=1,
+    parser.add_argument('--i_save', type=int, default=4,
                         help='frequency of model testing and saving')
     return parser
 
