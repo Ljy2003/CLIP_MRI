@@ -26,14 +26,14 @@ plt.rcParams['savefig.pad_inches'] = 0
 def config_parser():
     parser = configargparse.ArgumentParser()
     parser.add_argument('--data_dir', type=str,
-                        default='D:\\work2\\LLM_medicine\\CLIP-main\\', help='the path containing data')
+                        default='./', help='the path containing data')
     parser.add_argument('--image_type', type=str, default='.jpg')
     parser.add_argument('--expname', type=str, default='exp1')
-    parser.add_argument('--txt_path', type=str, default='D:\\work2\\LLM_medicine\\CLIP_MRI\\data\\label.txt',
+    parser.add_argument('--txt_path', type=str, default='./data/label.txt',
                         help='the path to training label and image path text')
-    parser.add_argument('--save_dir', type=str, default='ckpt\\')
+    parser.add_argument('--save_dir', type=str, default='ckpt/')
     parser.add_argument('--test_txt', type=str,
-                        default='D:\\work2\\LLM_medicine\\CLIP_MRI\\data\\test.txt', help='the path to test label text')
+                        default='./data/test.txt', help='the path to test label text')
 
     # for vision
     parser.add_argument('--resolution', type=int,
@@ -157,7 +157,7 @@ def train():
             loss_all.append(float(loss.detach().cpu().numpy())
         )
         if (epoch+1) % args.i_save == 0:
-            path = args.save_dir+'test'+str(epoch)+'\\'
+            path = args.save_dir+'test'+str(epoch)+'/'
             if not os.path.exists(path):
                 os.makedirs(path)
             torch.save(model, os.path.join(path,'model.pt'))
