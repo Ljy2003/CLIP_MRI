@@ -160,6 +160,7 @@ def train():
             path = args.save_dir+'test'+str(epoch)+'/'
             if not os.path.exists(path):
                 os.makedirs(path)
+            os.makedirs(path+'output/')
             torch.save(model, os.path.join(path, 'model.pt'))
             similarity, original_images, text = test(args, model)
             plt.figure(figsize=(15, 7))
