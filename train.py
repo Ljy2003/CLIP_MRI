@@ -181,6 +181,9 @@ def train():
             plt.savefig(path+'output.pdf')
             df=pd.DataFrame({'loss':loss_all})
             df.to_excel(path+'loss.xlsx')
+            param='lr:'+str(args.lr)+'\n'+'epochs:'+str(epoch)+'\n'+'batch size:'+str(atgs.batch_size)
+            with open(path+'parameter.txt','w') as f:
+                f.write(param)
 
 if __name__ == '__main__':
     train()
