@@ -173,12 +173,15 @@ def train():
                             )
         # test and save model
         if (epoch+1) % args.i_save == 0:
+            optimizer.zero_grad()
             path = args.save_dir+'test'+str(epoch)+'/'
             if not os.path.exists(path):
                 os.makedirs(path)
             os.makedirs(path+'output/')
             torch.save(model, os.path.join(path, 'model.pt'))
+            model.eval()
             similarity, original_images, text = test(args, model)
+            model.train()
             plt.figure(figsize=(15, 7))
             plt.imshow(similarity)
             count = similarity.shape[0]
