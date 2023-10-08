@@ -114,7 +114,8 @@ def test(args, model):
     images = torch.tensor(images).to(args.device)
     text_tokens = clip.tokenize(
         text, truncate=True).cuda()
-    _, logits_per_image = model(images, text_tokens)
+    with torch.no_grad():
+        _, logits_per_image = model(images, text_tokens)
     for i in range(len(text)):
         text[i] = text[i][:30]+'...'
     return logits_per_image.softmax(dim=-1).detach().cpu().numpy(), origional_images, text
@@ -162,8 +163,7 @@ def train():
             optimizer.zero_grad()
             text_tokens = clip.tokenize(
                 text, truncate=True).cuda()
-            with torch.no_grad():
-                logits_per_image, logits_per_text = model(image, text_tokens)
+            logits_per_image, logits_per_text = model(image, text_tokens)
             label = torch.arange(len(text)).to(args.device)
             loss_i = loss_x(logits_per_image, label)
             loss_t = loss_y(logits_per_text, label)
