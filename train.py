@@ -122,6 +122,8 @@ def train():
     '''
     parser = config_parser()
     args = parser.parse_args()
+    for i in vars(args):
+        print(i+str(vars(args)[i]))
     model, preprocess = clip.load(args.model_name)
     model.train()
     # new visual model
