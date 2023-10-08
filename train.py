@@ -162,7 +162,8 @@ def train():
             optimizer.zero_grad()
             text_tokens = clip.tokenize(
                 text, truncate=True).cuda()
-            logits_per_image, logits_per_text = model(image, text_tokens)
+            with torch.no_grad():
+                logits_per_image, logits_per_text = model(image, text_tokens)
             label = torch.arange(len(text)).to(args.device)
             loss_i = loss_x(logits_per_image, label)
             loss_t = loss_y(logits_per_text, label)
