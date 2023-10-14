@@ -16,7 +16,7 @@ import torchvision
 plt.rcParams['axes.grid'] = False
 plt.rcParams['figure.dpi'] = 600
 plt.rcParams['figure.figsize'] = (8, 4)
-plt.rcParams['font.family'] = 'SimHei'
+plt.rcParams['font.family'] = 'SimSun'
 plt.rcParams['lines.linewidth'] = 1
 plt.rcParams['mathtext.fontset'] = 'cm'
 plt.rcParams['savefig.format'] = 'pdf'
