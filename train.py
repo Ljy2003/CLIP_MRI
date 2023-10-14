@@ -52,7 +52,7 @@ def config_parser():
     # for transformer
     parser.add_argument('--context_length', type=int, default=100)
     parser.add_argument('--embed_dim', type=int, default=512)
-    parser.add_argument('--transformer_name', type=str, default="D:/work2/LLM_medicine/model/BAAIbge-large-en",
+    parser.add_argument('--transformer_name', type=str, default='BAAI/bge-large-zh-v1.5',
                         help='name of transformers and its tokenizer')
     parser.add_argument('--transformer_width',type=int,default=1024)
 
