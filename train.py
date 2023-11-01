@@ -189,6 +189,7 @@ def train():
     similarity_test.append(calc_similarity(args, args.test_txt, model))
     similarity_train.append(calc_similarity(
         args, args.train_subset_txt, model))
+    lr_shedular=torch.optim.lr_scheduler.CosineAnnealingLR(optimizer=optimizer,T_max=args.epochs+30)
     for epoch in tqdm.tqdm(range(args.epochs)):
         for index, (image, text) in (enumerate(tqdm.tqdm(dataloader))):
             optimizer.zero_grad()
@@ -201,6 +202,7 @@ def train():
             optimizer.step()
             loss_all.append(float(loss.detach().cpu().numpy())
                             )
+            lr_shedular.step()
         # test and save model
         if (epoch+1) % args.i_save == 0:
             path = args.save_dir+'test'+str(epoch)+'/'
